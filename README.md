@@ -11,7 +11,7 @@ server-side interface:
 	
 	IO = SIO(server);					// connects to your nodejs server
 	
-	IO.on( "connect", socket => {
+	IO.on( "connect", socket => {		// "connect" is a reserved CHANNEL to attach other CHANNELs
 	
 		socket.on(  "CHANNEL", req => {			// intercepts client request made on socket to this CHANNEL
 			console.log( "here is the client's request", req ); 
@@ -21,7 +21,7 @@ server-side interface:
 		
 	});
 	
-	IO.emit({ .... })  			// to emit the message to all clients
+	IO.emit({ .... })  			// to emit a request to all clients
 	
 and a client-side interface:
 
