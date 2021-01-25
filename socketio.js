@@ -262,7 +262,7 @@ module.exports = function SIO(server) {			// the good socketio
 						if ( ack )
 							send(socket, { message: ack } );
 						
-						// dont close the socket -- need it open to do mass emit to entire ecosystem
+						// dont close the socket -- need it open when we emit to the entire ecosystem
 						//socket.end();
 					}
 					
