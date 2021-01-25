@@ -19,13 +19,20 @@ and a client-side interface:
 
 	const
 		socket = io();
-		
-	socket.
 
+	socket.emit("JOIN", {		// connect with server side on its JOIN channel
+		...
+	});
+	
+	io.on("CHANNEL", req => {
+		console.log("server sent this request", req);
+	});
+	
 imported into the browsers via:
 
-	<script src="/socketio/socketio-client.js">
-	
+	<script type="text/javascript, src="/socketio/socketio-client.js">
+
+where your server is responsible for service its "/socketio" endpoint.
 
 ## Installation
 
