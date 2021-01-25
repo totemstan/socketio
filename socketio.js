@@ -4,10 +4,18 @@ Replaces buggy socket.io.
 
 ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
 
-@requires
+@requires CRYPTO
+
 */
 
-function SIO(server) {			// the good socketio
+const
+	CRYPTO = require("crypto"),	
+	Log = console.log,
+	Each = ( A, cb ) => {
+		Object.keys(A).forEach( key => cb( key, A[key] ) );
+	};
+
+module.exports = function SIO(server) {			// the good socketio
 	const
 		{ cbs, send, clients } = sio = {
 			cbs: {
