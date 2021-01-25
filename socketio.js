@@ -1,16 +1,16 @@
 /**
 
-Replaces buggy socket.io.
+	Replaces buggy socket.io.
 
-ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
+	ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
 
-@requires CRYPTO
+	@requires CRYPTO
 
 */
 
 const
 	CRYPTO = require("crypto"),	
-	Log = console.log,
+	Log = (...args) => console.log(">>>socketio",args),
 	Each = ( A, cb ) => {
 		Object.keys(A).forEach( key => cb( key, A[key] ) );
 	};
@@ -18,19 +18,19 @@ const
 module.exports = function SIO(server) {			// the good socketio
 	const
 		{ cbs, send, clients } = sio = {
-			cbs: {
+			cbs: {			// stash for listeners
 			},
 			
-			clients: {},
+			clients: {},	// stash for connected clients
 			
-			on: (channel,cb) => {
+			on: (channel,cb) => {			//< attach cb(req) listener on specified socketio channel
 				Log("set cb",channel,cb?true:false);
 				cbs[channel] = cb;
 			},
 			
-			emit: (channel,req) => {
+			emit: (channel,req) => {		//< broadcast req on socketio channel to all connected clients
 				Each( clients, (id,socket) => {
-					Log("IO.emit to", id, channel, req);
+					Log("allemit to client", id, channel, req);
 					send( socket, {
 						channel: channel,
 						message: req,
@@ -39,7 +39,7 @@ module.exports = function SIO(server) {			// the good socketio
 				});
 			},
 			
-			send: ( socket, req ) => {
+			send: ( socket, req ) => {		//< send req to client at specified socket
 				function constructReply (data) {
 					// Convert the data to JSON and copy it into a buffer
 					const json = JSON.stringify(data)
@@ -215,12 +215,12 @@ module.exports = function SIO(server) {			// the good socketio
 				const
 					ctrl = parseRFC5234buffer(d);
 				
-				//Log(ctrl);
+				//Log("ctrl packet",ctrl);
 				if ( ctrl ) {		// client's new WebSocket() creates a null ctrl
 					const 
 						{channel,message,id} = JSON.parse( ctrl );
 
-					Log("sio>>>", {
+					Log("ctrl packet", {
 						chan: channel,  
 						msg: message,
 						id: id,
@@ -237,12 +237,12 @@ module.exports = function SIO(server) {			// the good socketio
 								clients[id] = socket;
 								
 								socket.on = (channel,cb) => {		// attach on method
-									Log("set cb",channel,cb?true:false);
+									Log("attach listener on",channel,cb?true:false);
 									cbs[channel] = cb;
 								};
 
 								socket.emit = (channel,req) => {	// attach emit method
-									Log("socket emit", channel, req);
+									Log("emit to client", channel, req);
 									sio.send( socket, {
 										channel: channel,
 										message: req,
@@ -280,6 +280,7 @@ module.exports = function SIO(server) {			// the good socketio
 			}
 			
 			catch (err) {
+				Log("ctrl pk err", err);
 				if ( cb = cbs.error )
 					cb( new Error("invalid socketio control packet") );
 				
