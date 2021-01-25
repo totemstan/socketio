@@ -7,13 +7,21 @@ provides json-based web sockets, though it has hooks to support binary sockets (
 Per the [Socket.IO](https://socket.io/docs/v3/client-initialization/) specification, **SocketIO** provides both a 
 server-side interface:
 
-	const IO = require("socketio");
+	const SIO = require("socketio");
 	
-	IO.on(  "CHANNEL", req => {			// intercepts client request made on CHANNEL
-		console.log( "here is the client's request", req ); 
+	IO = SIO(server);					// connects to your nodejs server
+	
+	IO.on( "sonnect", socket => {
+	
+		socket.on(  "CHANNEL", req => {			// intercepts client request made on socket to this CHANNEL
+			console.log( "here is the client's request", req ); 
+		});
+		
+		/* etc for other CHANNELs */
+		
 	});
 	
-	IO.emit({ .... })  		// to emit the message to all clients
+	IO.emit({ .... })  			// to emit the message to all clients
 	
 and a client-side interface:
 
@@ -27,6 +35,8 @@ and a client-side interface:
 	io.on("CHANNEL", req => {
 		console.log("server sent this request", req);
 	});
+	
+	/* etc for other CHANNELs */
 	
 imported into the browsers via:
 
