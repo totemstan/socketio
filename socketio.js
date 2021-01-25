@@ -268,14 +268,14 @@ module.exports = function SIO(server) {			// the good socketio
 					
 					else
 					if ( cb = cbs.error )
-						cb( new Error(`invalid socketio control channel ${channel}`) );
+						cb( new Error(`invalid socketio control on channel=${channel}`) );
 
 					else
-						throw new Error(`invalid socketio control channel ${channel}`);
+						Log( `>>>socketio invalid control on channel=${channel} - reconnect client` );
 				}
 				
 				else {
-					Log("sio>>> connected");
+					Log(">>>socketio connected");
 				}
 			}
 			
@@ -284,7 +284,7 @@ module.exports = function SIO(server) {			// the good socketio
 					cb( new Error("invalid socketio control packet") );
 				
 				else {
-					throw new Error("invalid socketio control packet");
+					Log( ">>>socketio invalid control packet - reconnect client" );
 				}
 			}
 		});
