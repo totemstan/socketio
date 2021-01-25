@@ -11,7 +11,7 @@ server-side interface:
 	
 	IO = SIO(server);					// connects to your nodejs server
 	
-	IO.on( "sonnect", socket => {
+	IO.on( "connect", socket => {
 	
 		socket.on(  "CHANNEL", req => {			// intercepts client request made on socket to this CHANNEL
 			console.log( "here is the client's request", req ); 
