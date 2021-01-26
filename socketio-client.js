@@ -9,7 +9,7 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 
 	//ioTrace("ws connect", url, ioClient);
 
-	ioSocket = new WebSocket( (url || "ws://localhost:8080" || window.location ).replace("http:","ws:") );
+	ioSocket = new WebSocket( url ? url : (window.location+"").replace("https:","wss:").replace("http:","ws:") );
 	ioSocket.on = (channel,cb) => {
 		ioTrace("attach listener on", channel);
 		ioChannels[channel] = cb;

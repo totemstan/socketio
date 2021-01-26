@@ -105,7 +105,7 @@ module.exports = function SIO(server) {			// the good socketio
 				'Upgrade: WebSocket', 
 				'Connection: Upgrade', 
 				`Sec-WebSocket-Accept: ${hash}`,
-				`Sec-WebSocket-Protocol: json`
+				// `Sec-WebSocket-Protocol: json`	// cant set header on wss socket
 			]; 
 
 		// Write the response back to the client socket, being sure to append two 
