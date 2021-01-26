@@ -283,7 +283,7 @@ module.exports = function SIO(server) {			// the good socketio
 			catch (err) {
 				Log("ctrl pk err", err);
 				if ( cb = cbs.error )
-					cb( new Error("invalid socketio control packet") );
+					cb( new Error("invalid control packet - reconnect client") );
 				
 				else {
 					Log( "invalid control packet - reconnect client" );
