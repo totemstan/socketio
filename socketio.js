@@ -220,6 +220,7 @@ module.exports = function SIO(server) {			// the good socketio
 					const 
 						{channel,message,id} = JSON.parse( ctrl );
 
+					if (0)
 					Log("ctrl packet", {
 						chan: channel,  
 						msg: message,
@@ -271,11 +272,11 @@ module.exports = function SIO(server) {			// the good socketio
 						cb( new Error(`invalid socketio control on channel=${channel}`) );
 
 					else
-						Log( `>>>socketio invalid control on channel=${channel} - reconnect client` );
+						Log( `invalid control on channel=${channel} - reconnect client` );
 				}
 				
 				else {
-					Log(">>>socketio connected");
+					Log("connected");
 				}
 			}
 			
@@ -285,7 +286,7 @@ module.exports = function SIO(server) {			// the good socketio
 					cb( new Error("invalid socketio control packet") );
 				
 				else {
-					Log( ">>>socketio invalid control packet - reconnect client" );
+					Log( "invalid control packet - reconnect client" );
 				}
 			}
 		});
