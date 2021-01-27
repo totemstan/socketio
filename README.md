@@ -46,7 +46,7 @@ where your server is responsible for service its "/socketio" endpoint.
 
 ## Installation
 
-Clone [SocketIO](https://github.com/totemstan/socketio) || [COE](https://sc.appdev.proj.coe/acmesds/socketio) || [SBU](https://gitlab.gsmil/acmesds/socketio) into your PROJECT/totem folder.   
+Clone [SocketIO](https://github.com/totemstan/socketio) || [COE](https://sc.appdev.proj.coe/acmesds/socketio) || [SBU](https://gitlab.gsmil/acmesds/socketio) into your PROJECT/socketio folder.   
 
 ## Contacting, Contributing, Following
 
