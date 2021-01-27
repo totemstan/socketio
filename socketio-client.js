@@ -20,7 +20,7 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 
 		// Create a web scoket, send the req over the channel, then listen for optional ack.
 
-		const emitSocket = new WebSocket( (url || "ws://localhost:8080" || window.location ).replace("http:","ws:") );
+		const emitSocket = new WebSocket( url ? url : (window.location+"").replace("https:","wss:").replace("http:","ws:") );
 
 		emitSocket.addEventListener('open', () => {
 			// Send a message to the WebSocket server
