@@ -3,14 +3,22 @@ var
 
 const
 	ioTrace = (...args) => console.log(">>>socketio",args),
-	ioChannels = {};
+	ioChannels = {
+		disconnect: req => Log(res),
+		exit: req => Log(res),
+		timeout: req => Log(res),
+		readable: req => Log(res),
+		end: req => Log(res),
+		error: req => Log(res),
+	};		
+		
 
 function io(url) {	//< make a connect request to the server at url||window.location
 
 	//ioTrace("ws connect", url, ioClient);
 
 	ioSocket = new WebSocket( url ? url : (window.location+"").replace("https:","wss:").replace("http:","ws:") );
-	ioSocket.on = (channel,cb) => {
+	ioSocket.on = (channel,cb) => {		// attach on-event catcher
 		ioTrace("attach listener on", channel);
 		ioChannels[channel] = cb;
 	};
