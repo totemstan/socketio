@@ -1,6 +1,5 @@
 /**
-
-	Replaces buggy socket.io.
+	[SOCKETIO](https://github.com/totemstan/socketio.git) replaces buggy socket.io and socket.io-client
 
 	ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
 
@@ -44,19 +43,23 @@ module.exports = function SIO(server) {			// the good socketio
 					// Convert the data to JSON and copy it into a buffer
 					const json = JSON.stringify(data)
 					const jsonByteLength = Buffer.byteLength(json);
+					
 					// Note: we're not supporting > 65535 byte payloads at this stage 
 					const lengthByteCount = jsonByteLength < 126 ? 0 : 2; 
 					const payloadLength = lengthByteCount === 0 ? jsonByteLength : 126; 
 					const buffer = Buffer.alloc(2 + lengthByteCount + jsonByteLength); 
+					
 					// Write out the first byte, using opcode `1` to indicate that the message 
 					// payload contains text data 
 					buffer.writeUInt8(0b10000001, 0); 
 					buffer.writeUInt8(payloadLength, 1); 
+					
 					// Write the length of the JSON payload to the second byte 
 					let payloadOffset = 2; 
 					if (lengthByteCount > 0) { 
 						buffer.writeUInt16BE(jsonByteLength, 2); payloadOffset += lengthByteCount; 
 					} 
+					
 					// Write the JSON data to the data buffer 
 					buffer.write(json, payloadOffset); 
 					return buffer;
@@ -230,7 +233,16 @@ module.exports = function SIO(server) {			// the good socketio
 
 					if ( cb = cbs[channel] ) {
 						switch (channel) {
+							// trap socketio-reserved channels.
+								
 							case "disconnect":
+							case "exit":
+							case "timeout":
+							case "readable":
+							case "end":
+							case "data":
+								Log("closing socket for", channel, message, id);
+								socket.end();
 								break;
 								
 							case "connect":
@@ -254,6 +266,8 @@ module.exports = function SIO(server) {			// the good socketio
 								cb( socket );
 								break;
 
+							// trap client defined channels
+								
 							default:
 								cb( message );
 						}
@@ -263,7 +277,7 @@ module.exports = function SIO(server) {			// the good socketio
 						if ( ack )
 							send(socket, { message: ack } );
 						
-						// dont close the socket -- need it open when we emit to the entire ecosystem
+						// dont close the socket! We need it open to emit to the entire ecosystem
 						//socket.end();
 					}
 					
