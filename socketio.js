@@ -28,8 +28,9 @@ module.exports = function SIO(server) {			// the good socketio
 			},
 			
 			emit: (channel,req) => {		//< broadcast req on socketio channel to all connected clients
+				//Log("broadcasting to", channel, req);
 				Each( clients, (id,socket) => {
-					Log("allemit to client", id, channel, req);
+					//Log("broadcast", id, channel, req);
 					send( socket, {
 						channel: channel,
 						message: req,
@@ -117,7 +118,7 @@ module.exports = function SIO(server) {			// the good socketio
 		
 		socket.write(responseHeaders.join('\r\n') + '\r\n\r\n');
 
-		socket.on("data", d => {
+		socket.on("data", pk => {		// capture raw control packet data from the socket
 			function parseRFC5234buffer (buffer) {
 
 				function getOpCode() {
@@ -213,10 +214,10 @@ module.exports = function SIO(server) {			// the good socketio
 				}
 			}
 
-			//Log(d);
+			//Log(pk);
 			try {
 				const
-					ctrl = parseRFC5234buffer(d);
+					ctrl = parseRFC5234buffer(pk);	// make ctrl pk readable
 				
 				//Log("ctrl packet",ctrl);
 				if ( ctrl ) {		// client's new WebSocket() creates a null ctrl
@@ -231,11 +232,15 @@ module.exports = function SIO(server) {			// the good socketio
 						chanOK: channel in cbs
 					});  
 
-					if ( cb = cbs[channel] ) {
+					if ( cb = cbs[channel] ) {		// callback listener attached to this channel
 						switch (channel) {
 							// trap socketio-reserved channels.
 								
 							case "disconnect":
+								Log("============disconnect", id);
+								delete clients[id];
+								break;
+								
 							case "exit":
 							case "timeout":
 							case "readable":
@@ -247,6 +252,7 @@ module.exports = function SIO(server) {			// the good socketio
 								
 							case "connect":
 								
+								Log("connecting", id);
 								clients[id] = socket;
 								
 								socket.on = (channel,cb) => {		// attach on method
@@ -269,7 +275,7 @@ module.exports = function SIO(server) {			// the good socketio
 							// trap client defined channels
 								
 							default:
-								cb( message );
+								cb( message, clients[id] );
 						}
 						
 						// can optionally respond with an acknowlegement - but client will need to listen for it
@@ -283,7 +289,7 @@ module.exports = function SIO(server) {			// the good socketio
 					
 					else
 					if ( cb = cbs.error )
-						cb( new Error(`invalid socketio control on channel=${channel}`) );
+						cb( new Error(`invalid control on channel=${channel}`) );
 
 					else
 						Log( `invalid control on channel=${channel} - reconnect client` );

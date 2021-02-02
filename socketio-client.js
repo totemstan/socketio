@@ -15,7 +15,7 @@ const
 
 function io(url) {	//< make a connect request to the server at url||window.location
 
-	//ioTrace("ws connect", url, ioClient);
+	ioTrace("ws connect", url, ioClient);
 
 	ioSocket = new WebSocket( url ? url : (window.location+"").replace("https:","wss:").replace("http:","ws:") );
 	ioSocket.on = (channel,cb) => {		// attach on-event catcher
@@ -66,8 +66,9 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 	});
 
 	ioSocket.addEventListener('message', event => {		//< route socketio broadcast message to correct listener
-		//ioTrace("route", event.data );
-		try {
+		//alert("evmsg");
+		//ioTrace("route", event );
+		console.log("hereiam", event.data);
 			const
 				{channel,message,id} = JSON.parse(event.data),
 				cb = ioChannels[channel];
@@ -77,6 +78,7 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 
 			else
 				ioTrace( `socketio received json on undefined channel ${channel}`, event.data);
+		try {
 		}
 
 		catch (err) {
