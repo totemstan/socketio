@@ -13,8 +13,11 @@ server-side interface:
 	
 	IO.on( "connect", socket => {		// "connect" is a reserved CHANNEL to attach other CHANNELs
 	
-		socket.on(  "CHANNEL", req => {			// intercepts client request made on socket to this CHANNEL
+		socket.on(  "CHANNEL", (req,socket) => {			// intercepts client request made on socket to this CHANNEL
 			console.log( "here is the client's request", req ); 
+			socket.emit({ message: "a response" });
+			IO.emit({ message: "a message for everyone!" });
+			IO.clients["someone@totem.org"].emit({ message: "you get an extra message"});
 		});
 		
 		/* etc for other CHANNELs */

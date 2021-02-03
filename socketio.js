@@ -1,10 +1,13 @@
+// UNCLASSIFIED
+
 /**
+	@module SOCKETIO
+
 	[SOCKETIO](https://github.com/totemstan/socketio.git) replaces buggy socket.io and socket.io-client
 
 	ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
 
 	@requires CRYPTO
-
 */
 
 const
@@ -261,7 +264,7 @@ module.exports = function SIO(server) {			// the good socketio
 								};
 
 								socket.emit = (channel,req) => {	// attach emit method
-									Log("emit to client", channel, req);
+									//Log("emit to client", channel, req);
 									sio.send( socket, {
 										channel: channel,
 										message: req,
@@ -316,3 +319,4 @@ module.exports = function SIO(server) {			// the good socketio
 	return sio;
 }
 
+// UNCLASSIFIED

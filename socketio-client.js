@@ -1,3 +1,11 @@
+// UNCLASSIFIED
+
+/**
+	@module SOCKETIO-CLIENT
+	
+	[SOCKETIO client](https://github.com/totemstan/socketio.git) replaces buggy socket.io and socket.io-client
+*/
+
 var
 	ioSocket = null;
 
@@ -11,7 +19,6 @@ const
 		end: req => Log(res),
 		error: req => Log(res),
 	};		
-		
 
 function io(url) {	//< make a connect request to the server at url||window.location
 
@@ -47,7 +54,7 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 		});
 	};					
 
-	// Send a connect message and optionally listen for the ack
+	// Send a connect message 
 	ioTrace("connect");
 	ioSocket.addEventListener('open', () => {
 		// Send a message to the WebSocket server
@@ -58,7 +65,7 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 		}) );
 	});  
 
-	if (0)	// listen for the ack
+	if (0)	// could listen for an ack
 	ioSocket.addEventListener('message', event => {
 		// The `event` object is a typical DOM event object, and the message data sent
 		// by the server is stored in the `data` property
@@ -66,9 +73,7 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 	});
 
 	ioSocket.addEventListener('message', event => {		//< route socketio broadcast message to correct listener
-		//alert("evmsg");
-		//ioTrace("route", event );
-		console.log("hereiam", event.data);
+		try {
 			const
 				{channel,message,id} = JSON.parse(event.data),
 				cb = ioChannels[channel];
@@ -78,7 +83,6 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 
 			else
 				ioTrace( `socketio received json on undefined channel ${channel}`, event.data);
-		try {
 		}
 
 		catch (err) {
@@ -88,3 +92,5 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 
 	return ioSocket;
 }
+
+// UNCLASSIFIED
