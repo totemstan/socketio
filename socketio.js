@@ -26,7 +26,7 @@ module.exports = function SIO(server) {			// the good socketio
 			clients: {},	// stash for connected clients
 			
 			on: (channel,cb) => {			//< attach cb(req) listener on specified socketio channel
-				Log("set cb",channel,cb?true:false);
+				Log("listening on",channel);
 				cbs[channel] = cb;
 			},
 			

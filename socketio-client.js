@@ -86,7 +86,7 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 		}
 
 		catch (err) {
-			ioTrace( `socketio received invalid json on channel ${channel}`, event.data);
+			ioTrace( "ctrl pk error", err, event.data);
 		}
 	});
 
