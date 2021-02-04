@@ -30,6 +30,19 @@ module.exports = function SIO(server) {			// the good socketio
 				cbs[channel] = cb;
 			},
 			
+			emitOthers: (me, channel,req) => {		//< broadcast req on socketio channel to all connected clients
+				//Log("broadcasting to", channel, req);
+				Each( clients, (id,socket) => {
+					//Log("broadcast", id, channel, req);
+					if ( id != me )
+						send( socket, {
+							channel: channel,
+							message: req,
+							id: id
+						});
+				});
+			},
+			
 			emit: (channel,req) => {		//< broadcast req on socketio channel to all connected clients
 				//Log("broadcasting to", channel, req);
 				Each( clients, (id,socket) => {
