@@ -78,11 +78,12 @@ function io(url) {	//< make a connect request to the server at url||window.locat
 				{channel,message,id} = JSON.parse(event.data),
 				cb = ioChannels[channel];
 
-			if ( cb ) 
+			if ( cb )
 				cb( message );
 
 			else
 				ioTrace( `socketio received json on undefined channel ${channel}`, event.data);
+		
 		}
 
 		catch (err) {
