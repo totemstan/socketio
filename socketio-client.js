@@ -7,7 +7,8 @@
 */
 
 var
-	ioSocket = null;
+	ioSocket = null,
+	ioClient = "TBD";
 
 const
 	ioTrace = (...args) => console.log(">>>socketio",args),
