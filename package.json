@@ -4,7 +4,9 @@
   "description": "Replacement for buggy socket.io",
   "main": "socketio.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+ 	"redoc": "jsdoc2md --template README.hbs --files socketio.js socketio-client.js >README.md; git commit -am 'redoc'; git  push agent master"
+
   },
   "repository": {
     "type": "git",

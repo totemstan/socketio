@@ -61,3 +61,35 @@ or [follow TOTEM milestones](http://totem.hopto.org/milestones.view) || [COE](ht
 ## License
 
 [MIT](LICENSE)
+
+
+## Modules
+
+<dl>
+<dt><a href="#module_SOCKETIO">SOCKETIO</a></dt>
+<dd><p>Replaces the buggy socket.io and socket.io-client modules.</p>
+<pre><code>ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8
+</code></pre>
+</dd>
+<dt><a href="#module_SOCKETIO-CLIENT">SOCKETIO-CLIENT</a></dt>
+<dd><p>Replaces the buggy socket.io and socket.io-client modules.</p>
+</dd>
+</dl>
+
+<a name="module_SOCKETIO"></a>
+
+## SOCKETIO
+Replaces the buggy socket.io and socket.io-client modules.
+
+	ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8
+
+**Requires**: <code>module:CRYPTO</code>  
+<a name="module_SOCKETIO-CLIENT"></a>
+
+## SOCKETIO-CLIENT
+Replaces the buggy socket.io and socket.io-client modules.
+
+
+* * *
+
+&copy; 2012 ACMESDS

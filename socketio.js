@@ -1,11 +1,11 @@
 // UNCLASSIFIED
 
 /**
-	@module SOCKETIO
-
-	[SOCKETIO](https://github.com/totemstan/socketio.git) replaces buggy socket.io and socket.io-client
+	Replaces the buggy socket.io and socket.io-client modules.
 
 	ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
+
+	@module SOCKETIO
 
 	@requires CRYPTO
 */
