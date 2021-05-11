@@ -20,16 +20,34 @@ const
 module.exports = function SIO(server) {			// the good socketio
 	const
 		{ cbs, send, clients } = sio = {
+			/**
+			Stash for listeners.
+			@private
+			*/
 			cbs: {			// stash for listeners
 			},
 			
+			/**
+			Stash for connected clients.
+			*/
 			clients: {},	// stash for connected clients
 			
+			/**
+			Attached a callback listener to a specified channel.
+			@param {string} channel name of channel to attach listener
+			@param {function} cb callback listener(req) accepting a request hash
+			*/
 			on: (channel,cb) => {			//< attach cb(req) listener on specified socketio channel
 				Log("listening on",channel);
 				cbs[channel] = cb;
 			},
 			
+			/**
+			Broadcast a request on a specified channel to all connected clients except the broadcaster.
+			@param {string} me id name of broadcaster
+			@param {string} channel name of channel
+			@param {object} req request hash
+			*/			
 			emitOthers: (me, channel,req) => {		//< broadcast req on socketio channel to all connected clients
 				//Log("broadcasting to", channel, req);
 				Each( clients, (id,socket) => {
@@ -43,6 +61,11 @@ module.exports = function SIO(server) {			// the good socketio
 				});
 			},
 			
+			/**
+			Broadcast a request on a specified channel to all connected clients.
+			@param {string} channel name of channel
+			@param {object} req request hash
+			*/			
 			emit: (channel,req) => {		//< broadcast req on socketio channel to all connected clients
 				//Log("broadcasting to", channel, req);
 				Each( clients, (id,socket) => {
@@ -55,6 +78,11 @@ module.exports = function SIO(server) {			// the good socketio
 				});
 			},
 			
+			/**
+			Send a request to a client's socket.
+			@param {object} socket client's socket
+			@param {object} req request hash
+			*/
 			send: ( socket, req ) => {		//< send req to client at specified socket
 				function constructReply (data) {
 					// Convert the data to JSON and copy it into a buffer
@@ -85,6 +113,10 @@ module.exports = function SIO(server) {			// the good socketio
 				socket.write( constructReply(req) ); 
 			},
 
+			/**
+			Path to the socketio client
+			@private
+			*/
 			path: () => "**** The good socketio of the west ****"
 		};
 
