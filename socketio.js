@@ -20,16 +20,16 @@ const
 module.exports = function SIO(server) {			// the good socketio
 	const
 		{ cbs, send, clients } = sio = {
-			/**
-			Stash for listeners.
-			@private
-			*/
+/**
+Stash for listeners.
+@private
+*/
 			cbs: {			// stash for listeners
 			},
 			
-			/**
-			Stash for connected clients.
-			*/
+/**
+Stash for connected clients.
+*/
 			clients: {},	// stash for connected clients
 			
 			/**
