@@ -1,14 +1,13 @@
 // UNCLASSIFIED
 
 /**
-	Replaces the buggy socket.io and socket.io-client modules.
+Replaces the buggy socket.io and socket.io-client modules.
+Documented in accordance with [jsdoc]{@link https://jsdoc.app/}.
 
-	ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
+ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
 
-	@module SOCKETIO
-
-	@requires CRYPTO
-	This is a test
+@module SOCKETIO
+@requires CRYPTO
 */
 
 const

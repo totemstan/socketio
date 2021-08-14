@@ -1,8 +1,8 @@
 # SOCKETIO
 
-**SocetIO** provides a form-fit-functional replacement for the notoriously buggy [Socket.IO](https://www.npmjs.com/package/socket.io) 
+**SocketIO** provides a form-fit-functional replacement for the notoriously buggy [Socket.IO](https://www.npmjs.com/package/socket.io) 
 and its [Socet.IO-Client](https://www.npmjs.com/package/socket.io-client) client counterpart.  Like its Socket.IO predecessors, 
-**SocketIO** provides json-based web sockets, though it has hooks to support binary sockets (for VoIP, video, etc) applications.
+**SocketIO** provides json-based web sockets, though it also has hooks to support binary sockets (for VoIP, video, etc) applications.
 **SocketIO** provides both a server-side and client-side modules that mimic the [Socket.IO](https://socket.io/docs/v3/client-initialization/)
 specification (less the bugs).
 
