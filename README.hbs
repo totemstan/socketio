@@ -50,7 +50,7 @@ On the client-side:
 	
 ## Installation
 
-Clone [SocketIO](https://github.com/totemstan/socketio) || [COE](https://sc.appdev.proj.coe/acmesds/socketio) || [SBU](https://gitlab.gs.mil/totemstan/socketio) into your PROJECT/socketio folder.   
+Clone [SocketIO](https://github.com/totemstan/socketio) || [COE](https://sc.appdev.proj.coe/acmesds/socketio) || [SBU](https://gitlab.gs.mil/totemstan/socketio) into your PROJECT folder.   
 
 ## Contacting, Contributing, Following
 
