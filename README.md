@@ -50,20 +50,72 @@ On the client-side:
 	
 ## Installation
 
-Clone [SocketIO](https://github.com/totemstan/socketio) || [COE](https://sc.appdev.proj.coe/acmesds/socketio) || [SBU](https://gitlab.gs.mil/totemstan/socketio) into your PROJECT folder.   
+Clone **SOCKETIO** from one of its repos:
+
+	git clone https://github.com/totemstan/socketio
+	git clone https://sc.appdev.proj.coe/acmesds/socketio
+	git clone https://gitlab.west.nga.ic.gov/acmesds/socketio
+
+## Modules
+
+<dl>
+<dt><a href="#module_SOCKETIO">SOCKETIO</a></dt>
+<dd><p>Replaces the buggy socket.io and socket.io-client modules.
+Documented in accordance with <a href="https://jsdoc.app/">jsdoc</a>.</p>
+<p>ref: <a href="https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8">https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8</a></p>
+</dd>
+<dt><a href="#module_SOCKETIO-CLIENT">SOCKETIO-CLIENT</a></dt>
+<dd><p>Replaces the buggy socket.io and socket.io-client modules.</p>
+</dd>
+</dl>
+
+<a name="module_SOCKETIO"></a>
+
+## SOCKETIO
+Replaces the buggy socket.io and socket.io-client modules.
+Documented in accordance with [jsdoc](https://jsdoc.app/).
+
+ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8
+
+**Requires**: <code>module:CRYPTO</code>  
+<a name="module_SOCKETIO-CLIENT"></a>
+
+## SOCKETIO-CLIENT
+Replaces the buggy socket.io and socket.io-client modules.
+
 
 ## Contacting, Contributing, Following
 
-Feel free to [submit and status TOTEM issues](http://totem.zapto.org/issues.view) || [COE](https://totem.west.ile.nga.ic.gov/issues.view) || [SBU](https://totem.nga.mil/issues.view), [contribute TOTEM notebooks](http://totem.zapto.org/shares/notebooks/) || [COE](https://totem.west.ile.nga.ic.gov/shares/notebooks/) || [SBU](https://totem.nga.mil/shares/notebooks/),
-[inspect TOTEM requirements](http://totem.zapto.org/reqts.view) || [COE](https://totem.west.ile.nga.ic.gov/reqts.view) || [SBU](https://totem.nga.mil/reqts.view), [browse TOTEM holdings](http://totem.zapto.org/) || [COE](https://totem.west.ile.nga.ic.gov/) || [SBU](https://totem.nga.mil/), 
-or [follow TOTEM milestones](http://totem.zapto.org/milestones.view) || [COE](https://totem.west.ile.nga.ic.gov/milestones.view) || [SBU](https://totem.nga.mil/milestones.view).
+Feel free to 
+* submit and status **TOTEM** issues (
+[WWW](http://totem.zapto.org/issues.view) 
+[COE](https://totem.west.ile.nga.ic.gov/issues.view) 
+[SBU](https://totem.nga.mil/issues.view)
+)  
+* contribute to **TOTEM** notebooks (
+[WWW](http://totem.zapto.org/shares/notebooks/) 
+[COE](https://totem.west.ile.nga.ic.gov/shares/notebooks/) 
+[SBU](https://totem.nga.mil/shares/notebooks/)
+)  
+* revise **TOTEM** requirements (
+[WWW](http://totem.zapto.org/reqts.view) 
+[COE](https://totem.west.ile.nga.ic.gov/reqts.view) 
+[SBU](https://totem.nga.mil/reqts.view), 
+)  
+* browse **TOTEM** holdings (
+[WWW](http://totem.zapto.org/) 
+[COE](https://totem.west.ile.nga.ic.gov/) 
+[SBU](https://totem.nga.mil/)
+)  
+* or follow **TOTEM** milestones (
+[WWW](http://totem.zapto.org/milestones.view) 
+[COE](https://totem.west.ile.nga.ic.gov/milestones.view) 
+[SBU](https://totem.nga.mil/milestones.view)
+).
 
 ## License
 
 [MIT](LICENSE)
-
-
-{ {>main} }
 
 * * *
 
