@@ -56,6 +56,11 @@ Clone **SOCKETIO** from one of its repos:
 	git clone https://sc.appdev.proj.coe/acmesds/socketio
 	git clone https://gitlab.west.nga.ic.gov/acmesds/socketio
 
+## Program Reference
+<details>
+<summary>
+<i>Open/Close</i>
+</summary>
 ## Modules
 
 <dl>
@@ -83,6 +88,7 @@ ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-
 ## SOCKETIO-CLIENT
 Replaces the buggy socket.io and socket.io-client modules.
 
+</details>
 
 ## Contacting, Contributing, Following
 
