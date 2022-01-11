@@ -35,7 +35,7 @@ On the server:
 	
 	IO.emit({ .... })  			// to emit a request to all clients
 
-On the client-side:
+On the client:
 
 	<script type="text/javascript, src="/socketio/socketio-client.js"></script>
 
