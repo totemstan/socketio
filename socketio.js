@@ -31,8 +31,7 @@ On the server:
 		
 		/* etc for other CHANNELs */
 
-	});
-	
+	});	
 	IO.emit({ .... })  			// to emit a request to all clients
 
 On the client:
