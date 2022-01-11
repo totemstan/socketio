@@ -11,6 +11,24 @@ ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-
 
 @requires CRYPTO
 
+@example
+
+On the client:
+
+	<script type="text/javascript, src="/socketio/socketio-client.js"></script>
+
+	const
+		ioSocket = io();			// connect to socketIO by emitting a "connect" request
+		ioClient = "myClientName"
+
+	ioSocket.emit("CHANNEL", {		// send request to server side on its CHANNEL
+		...
+	});
+	
+	ioSocket.on("CHANNEL", req => {
+		console.log("server sent this request", req);
+	});
+	
 
 @example
 
