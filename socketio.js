@@ -13,34 +13,76 @@ ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-
 
 @example
 
-// Server side
+On the server:
 
-const
-	SOCKETIO = require("socketio"),
-	SIO = SOCKETIO(server); 	// establish sockets on provided HTTP server
+	const SIO = require("socketio");
 	
-SIO.on("connect", socket => {  	// define socket listeners when client calls the socketio-client io()
-	console.log("listening to sockets");
-
-	socket.on( "join", (req,socket) => {	// trap client "join" request
+	IO = SIO(server);					// connects socketIO to your nodejs server
+	
+	IO.on( "connect", socket => {		// the client automatically emits a "connect" request when it calls io()  
+	
+		socket.on(  "CHANNEL", (req,socket) => {			// intercepts client request made on socket to this CHANNEL
+			console.log( "here is the client's request", req ); 
+			socket.emit({ message: "a response" });
+			IO.emit({ message: "a message for everyone!" });
+			IO.emitOthers("SkipThisClient", { message: "a message for everyone!" });		// useful emit extension
+			IO.clients["someone@totem.org"].emit({ message: "you get an extra message"});
+		});
+		
+		/* etc for other CHANNELs */
+		
 	});
 	
-	// etc
-});
+	IO.emit({ .... })  			// to emit a request to all clients
+
+On the client-side:
+
+	<script type="text/javascript, src="/socketio/socketio-client.js"></script>
+
+	const
+		ioSocket = io();			// connect to socketIO by emitting a "connect" request
+		ioClient = "myClientName"
+
+	ioSocket.emit("CHANNEL", {		// send request to server side on its CHANNEL
+		...
+	});
 	
-// Client side
-// The socketio interface is established when the server does a require( "socketio" ) to create a 
-// socketio = "/socketio/socketio-client.js" endpoint from which the client imports its client via a 
-// <script src=socketio> and defines a default ioClient name.
+	ioSocket.on("CHANNEL", req => {
+		console.log("server sent this request", req);
+	});
 	
-const
-	iosocket = io(); 					// connect to socketio 
-	ioClient = "somewhere@org.com";		// default client nmae
+
+@example
+
+On the server:
+
+	const
+		SOCKETIO = require("socketio"),
+		SIO = SOCKETIO(server); 	// establish sockets on provided HTTP server
+
+	SIO.on("connect", socket => {  	// define socket listeners when client calls the socketio-client io()
+		console.log("listening to sockets");
+
+		socket.on( "join", (req,socket) => {	// trap client "join" request
+		});
+
+		// etc
+	});
 	
-	iosocket.emit( "join", {			// send join request to server
-		client: ioClient,				// usually provide with request 
-		message: "can I join please?"	// optional connection info
-	}); 
+
+On the client:
+	// The socketio interface is established when the server does a require( "socketio" ) to create a 
+	// socketio = "/socketio/socketio-client.js" endpoint from which the client imports its client via a 
+	// <script src=socketio> and defines a default ioClient name.
+
+	const
+		iosocket = io(); 					// connect to socketio 
+		ioClient = "somewhere@org.com";		// default client nmae
+
+		iosocket.emit( "join", {			// send join request to server
+			client: ioClient,				// usually provide with request 
+			message: "can I join please?"	// optional connection info
+		}); 
 			
 */
 
