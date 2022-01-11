@@ -28,9 +28,10 @@ On the server:
 			IO.clients["someone@totem.org"].emit({ message: "you get an extra message"});
 		});
 		
-		/* etc for other CHANNELs */
+		// etc for other CHANNELs 
 
 	});	
+	IO.emit({ .... })  			// to emit a request to all clients
 
 On the client:
 
