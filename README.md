@@ -1,4 +1,4 @@
-# SOCKETIO
+# SocketIO
 
 Provides a form-fit-functional replacement for the notoriously buggy [socket.io](https://www.npmjs.com/package/socket.io) 
 and its [socket.io-client](https://www.npmjs.com/package/socket.io-client) client counterpart.  Like its socket.io predecessors, 
@@ -8,7 +8,7 @@ specification (less the bugs of course).
 
 ## Installation
 
-Clone **SOCKETIO** from one of its repos:
+Clone **SocketIO** from one of its repos:
 
 	git clone https://github.com/totemstan/socketio
 	git clone https://sc.appdev.proj.coe/acmesds/socketio
