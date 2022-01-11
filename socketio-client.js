@@ -1,10 +1,10 @@
 // UNCLASSIFIED
 
 /**
-	Replaces the buggy socket.io and socket.io-client modules.
-	
-	@module SOCKETIO-CLIENT
-	
+Replaces the buggy socket.io and socket.io-client modules found in the public.
+
+@module SOCKETIO-CLIENT
+@author [ACMESDS](https://totemstan.github.io)
 */
 
 var

@@ -70,7 +70,7 @@ Documented in accordance with <a href="https://jsdoc.app/">jsdoc</a>.</p>
 <p>ref: <a href="https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8">https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8</a></p>
 </dd>
 <dt><a href="#module_SOCKETIO-CLIENT">SOCKETIO-CLIENT</a></dt>
-<dd><p>Replaces the buggy socket.io and socket.io-client modules.</p>
+<dd><p>Replaces the buggy socket.io and socket.io-client modules found in the public.</p>
 </dd>
 </dl>
 
@@ -83,11 +83,44 @@ Documented in accordance with [jsdoc](https://jsdoc.app/).
 ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8
 
 **Requires**: <code>module:CRYPTO</code>  
+**Author**: [ACMESDS](https://totemstan.github.io)  
+**Example**  
+```js
+// Server side
+
+const
+	SOCKETIO = require("socketio"),
+	SIO = SOCKETIO(server); 	// establish sockets on provided HTTP server
+	
+SIO.on("connect", socket => {  	// define socket listeners when client calls the socketio-client io()
+	console.log("listening to sockets");
+
+	socket.on( "join", (req,socket) => {	// trap client "join" request
+	});
+	
+	// etc
+});
+	
+// Client side
+// The socketio interface is established when the server does a require( "socketio" ) to create a 
+// socketio = "/socketio/socketio-client.js" endpoint from which the client imports its client via a 
+// <script src=socketio> and defines a default ioClient name.
+	
+const
+	iosocket = io(); 					// connect to socketio 
+	ioClient = "somewhere@org.com";		// default client nmae
+	
+	iosocket.emit( "join", {			// send join request to server
+		client: ioClient,				// usually provide with request 
+		message: "can I join please?"	// optional connection info
+	}); 
+```
 <a name="module_SOCKETIO-CLIENT"></a>
 
 ## SOCKETIO-CLIENT
-Replaces the buggy socket.io and socket.io-client modules.
+Replaces the buggy socket.io and socket.io-client modules found in the public.
 
+**Author**: [ACMESDS](https://totemstan.github.io)  
 </details>
 
 ## Contacting, Contributing, Following

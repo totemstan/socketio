@@ -7,7 +7,41 @@ Documented in accordance with [jsdoc]{@link https://jsdoc.app/}.
 ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8	
 
 @module SOCKETIO
+@author [ACMESDS](https://totemstan.github.io)
+
 @requires CRYPTO
+
+@example
+
+// Server side
+
+const
+	SOCKETIO = require("socketio"),
+	SIO = SOCKETIO(server); 	// establish sockets on provided HTTP server
+	
+SIO.on("connect", socket => {  	// define socket listeners when client calls the socketio-client io()
+	console.log("listening to sockets");
+
+	socket.on( "join", (req,socket) => {	// trap client "join" request
+	});
+	
+	// etc
+});
+	
+// Client side
+// The socketio interface is established when the server does a require( "socketio" ) to create a 
+// socketio = "/socketio/socketio-client.js" endpoint from which the client imports its client via a 
+// <script src=socketio> and defines a default ioClient name.
+	
+const
+	iosocket = io(); 					// connect to socketio 
+	ioClient = "somewhere@org.com";		// default client nmae
+	
+	iosocket.emit( "join", {			// send join request to server
+		client: ioClient,				// usually provide with request 
+		message: "can I join please?"	// optional connection info
+	}); 
+			
 */
 
 const
@@ -20,16 +54,16 @@ const
 module.exports = function SIO(server) {			// the good socketio
 	const
 		{ cbs, send, clients } = sio = {
-/**
-Stash for listeners.
-@private
-*/
+			/**
+			Stash for listeners.
+			@private
+			*/
 			cbs: {			// stash for listeners
 			},
-			
-/**
-Stash for connected clients.
-*/
+
+			/**
+			Stash for connected clients.
+			*/
 			clients: {},	// stash for connected clients
 			
 			/**
