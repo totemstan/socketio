@@ -70,7 +70,7 @@ On the client:
 
 	const
 		ioSocket = io();			// connect to socketIO by emitting a "connect" request
-		ioClient = "myClientName"
+		ioClient = "myClientName";	// set a client name to identify this socket
 
 	ioSocket.emit("CHANNEL", {		// send request to server side on its CHANNEL
 		...
