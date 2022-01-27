@@ -194,6 +194,12 @@ module.exports = function SIO(server) {			// the good socketio
 			path: () => "**** The good socketio of the west ****"
 		};
 
+	/**
+	Need to establish an "update" channel to service all socketio requests.  The "upgrade" channel is called
+	when the client creates a new WebSocket.  This "upgrade" channel then responds back to the client with a
+	reponceheader, then establishes a "data" channel for the client to send its control packet, then handoff
+	the control packet channel request to a listener establihsed in sio.cbs.
+	*/
 	server.on('upgrade', (req, socket) => {	// intercept socketio request
 
 		const
@@ -359,7 +365,7 @@ module.exports = function SIO(server) {			// the good socketio
 							// trap socketio-reserved channels.
 								
 							case "disconnect":
-								Log("============disconnect", id);
+								Log("disconnecting socket", id);
 								delete clients[id];
 								break;
 								
@@ -368,17 +374,17 @@ module.exports = function SIO(server) {			// the good socketio
 							case "readable":
 							case "end":
 							case "data":
-								Log("closing socket for", channel, message, id);
+								Log("closing socket", channel, message, id);
 								socket.end();
 								break;
 								
 							case "connect":
 								
-								Log("connecting", id);
+								Log("connecting socket", id);
 								clients[id] = socket;
 								
 								socket.on = (channel,cb) => {		// attach on method
-									Log("attach listener on",channel,cb?true:false);
+									Log("attaching listener on",channel,cb?true:false);
 									cbs[channel] = cb;
 								};
 
@@ -423,7 +429,7 @@ module.exports = function SIO(server) {			// the good socketio
 			}
 			
 			catch (err) {
-				Log("ctrl pk err", err);
+				//Log("ctrl pk err", err);
 				if ( cb = cbs.error )
 					cb( new Error("invalid control packet - reconnect client") );
 				
