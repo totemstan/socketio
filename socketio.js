@@ -446,10 +446,11 @@ const
 
 switch ( process.argv[2] ) { // unit tests
 	case "?":
-		Trace("unit test with 'node socketio.js [S$ || S0 || S1 ... ]'");
+	case "I?""
+		Trace("unit test with 'node socketio.js [I$ || I0 || I1 ... ]'");
 		break;
 	
-	case "S$":
+	case "I$":
 		Debug({SIO:SIO});
 		break;
 }
