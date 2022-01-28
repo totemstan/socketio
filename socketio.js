@@ -451,6 +451,7 @@ switch ( process.argv[2] ) { // unit tests
 	
 	case "S$":
 		const
+			VM = require("vm"),
 			CTX = VM.createContext(SIO);
 
 		require("repl").start({
