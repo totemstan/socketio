@@ -86,10 +86,10 @@ On the client:
 
 const
 	CRYPTO = require("crypto"),
-	{Copy, Each, Debug} = require("../enums");
+	{Copy, Each, Debug, isFunction} = require("../enums");
 
 const
-	{ Trace } = module.exports = Copy({
+	{ Trace } = module.exports = SIO = Copy({
 		Trace: (msg, ...args) => `sio>>>${msg}`.trace( args )
 	}, function SIO(server) {			// the good socketio
 		const
@@ -450,7 +450,8 @@ switch ( process.argv[2] ) { // unit tests
 		break;
 	
 	case "S$":
-		Debug(SIO);
+		Debug({SIO:SIO});
+		break;
 }
 
 // UNCLASSIFIED
