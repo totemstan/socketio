@@ -86,7 +86,7 @@ On the client:
 
 const
 	CRYPTO = require("crypto"),
-	{Copy, Each} = require("../enums");
+	{Copy, Each, Debug} = require("../enums");
 
 const
 	{ Trace } = module.exports = Copy({
@@ -450,19 +450,7 @@ switch ( process.argv[2] ) { // unit tests
 		break;
 	
 	case "S$":
-		const
-			VM = require("vm"),
-			CTX = VM.createContext(SIO);
-
-		require("repl").start({
-			eval: (cmd, ctx, filename, cb) => {
-				if ( cmd ) 
-					cb( null, VM.runInContext(cmd, CTX));
-			}, 
-			prompt: "$> ", 
-			useGlobal: true
-		});
-
+		Debug(SIO);
 }
 
 // UNCLASSIFIED
