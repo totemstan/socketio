@@ -1,6 +1,6 @@
 {
   "name": "socketio",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Replacement for buggy socket.io",
   "main": "socketio.js",
   "scripts": {
