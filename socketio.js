@@ -434,7 +434,7 @@ const
 						cb( new Error("invalid control packet - reconnect client") );
 
 					else {
-						Trace( "invalid control packet - reconnect client" );
+						Trace( "invalid control packet - reconnect client", err );
 					}
 				}
 			});
