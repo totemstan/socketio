@@ -9,7 +9,8 @@ ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-
 @module SOCKETIO
 @author [ACMESDS](https://totemstan.github.io)
 
-@requires CRYPTO
+@requires [enums](https://github.com/totemstan/enums) 
+@requires crypto
 
 @example
 

@@ -1,4 +1,4 @@
-# SocketIO
+# socketIO [WWW](https://github.com/totemstan/socketio)  [COE](https://sc.appdev.proj.coe/acmesds/socketio)  [SBU](https://gitlab.west.nga.ic.gov/acmesds/socketio)
 
 Provides a form-fit-functional replacement for the notoriously buggy [socket.io](https://www.npmjs.com/package/socket.io) 
 and its [socket.io-client](https://www.npmjs.com/package/socket.io-client) client counterpart.  Like its socket.io predecessors, 
@@ -40,7 +40,7 @@ Documented in accordance with [jsdoc](https://jsdoc.app/).
 
 ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8
 
-**Requires**: <code>module:CRYPTO</code>  
+**Requires**: <code>module:[enums](https://github.com/totemstan/enums)</code>, <code>module:crypto</code>  
 **Author**: [ACMESDS](https://totemstan.github.io)  
 **Example**  
 ```js
