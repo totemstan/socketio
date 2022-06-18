@@ -445,15 +445,8 @@ const
 		return sio;
 	});
 
-switch ( process.argv[2] ) { // unit tests
-	case "?":
-	case "I?":
-		Trace("unit test with 'node socketio.js [I$ || I0 || I1 ... ]'");
-		break;
-	
-	case "I$":
-		Debug({SIO:SIO});
-		break;
-}
+Debug("socketio", {	// unit test
+	$: SIO
+});
 
 // UNCLASSIFIED
