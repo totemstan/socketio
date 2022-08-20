@@ -10,9 +10,9 @@ specification (less the bugs of course).
 
 Clone **SocketIO** from one of its repos:
 
-	git clone https://github.com/totemstan/socketio
-	git clone https://sc.appdev.proj.coe/acmesds/socketio
-	git clone https://gitlab.west.nga.ic.gov/acmesds/socketio
+	cd MYPROJECT
+	git clone REPO/totemstan/socketio
+	git clone REPO/totemstan/enums
 
 ## Program Reference
 <details>
