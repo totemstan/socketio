@@ -8,7 +8,7 @@ specification (less the bugs of course).
 
 ## Installation
 
-Clone **SocketIO** from one of its repos:
+Clone **SocketIO** from one of its REPOs:
 
 	cd MYPROJECT
 	git clone REPO/totemstan/socketio
