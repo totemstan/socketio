@@ -87,7 +87,7 @@ On the client:
 
 const
 	CRYPTO = require("crypto"),
-	{Copy, Each, Debug, isFunction} = require("../enums");
+	{Copy, Each, Debug, isFunction} = require("./enums");
 
 const
 	{ Trace } = module.exports = SIO = Copy({
