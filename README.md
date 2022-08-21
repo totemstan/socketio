@@ -40,7 +40,7 @@ Documented in accordance with [jsdoc](https://jsdoc.app/).
 
 ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8
 
-**Requires**: <code>module:[enums](https://github.com/totemstan/enums)</code>, <code>module:crypto</code>  
+**Requires**: <code>module:[enums](https://github.com/totemstan/enums)</code>, <code>module:[crypto](https://nodejs.org/docs/latest/api/)</code>  
 **Author**: [ACMESDS](https://totemstan.github.io)  
 **Example**  
 ```js

@@ -10,7 +10,7 @@ ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-
 @author [ACMESDS](https://totemstan.github.io)
 
 @requires [enums](https://github.com/totemstan/enums) 
-@requires crypto
+@requires [crypto](https://nodejs.org/docs/latest/api/)
 
 @example
 
