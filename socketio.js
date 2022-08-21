@@ -10,7 +10,7 @@ ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-
 @author [ACMESDS](https://totemstan.github.io)
 
 @requires [enums](https://github.com/totemstan/enums) 
-@requires crypto
+@requires [crypto](https://nodejs.org/docs/latest/api/)
 
 @example
 
@@ -87,7 +87,7 @@ On the client:
 
 const
 	CRYPTO = require("crypto"),
-	{Copy, Each, Debug, isFunction} = require("../enums");
+	{Copy, Each, Debug, isFunction} = require("./enums");
 
 const
 	{ Trace } = module.exports = SIO = Copy({

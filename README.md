@@ -8,11 +8,11 @@ specification (less the bugs of course).
 
 ## Installation
 
-Clone **SocketIO** from one of its repos:
+Clone **SocketIO** from one of its REPOs:
 
-	git clone https://github.com/totemstan/socketio
-	git clone https://sc.appdev.proj.coe/acmesds/socketio
-	git clone https://gitlab.west.nga.ic.gov/acmesds/socketio
+	cd MYPROJECT
+	git clone REPO/totemstan/socketio
+	git clone REPO/totemstan/enums
 
 ## Program Reference
 <details>
@@ -40,7 +40,7 @@ Documented in accordance with [jsdoc](https://jsdoc.app/).
 
 ref: https://medium.com/hackernoon/implementing-a-websocket-server-with-node-js-d9b78ec5ffa8
 
-**Requires**: <code>module:[enums](https://github.com/totemstan/enums)</code>, <code>module:crypto</code>  
+**Requires**: <code>module:[enums](https://github.com/totemstan/enums)</code>, <code>module:[crypto](https://nodejs.org/docs/latest/api/)</code>  
 **Author**: [ACMESDS](https://totemstan.github.io)  
 **Example**  
 ```js
