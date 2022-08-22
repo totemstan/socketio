@@ -87,7 +87,7 @@ On the client:
 
 const
 	CRYPTO = require("crypto"),
-	{Copy, Each, Debug, isFunction} = require("./enums");
+	{Copy, Each, Start, isFunction} = require("./enums");
 
 const
 	{ Trace } = module.exports = SIO = Copy({
@@ -445,8 +445,8 @@ const
 		return sio;
 	});
 
-Debug("socketio", {	// unit test
-	$: SIO
+Start("socketio", {	
+	ctx: SIO
 });
 
 // UNCLASSIFIED

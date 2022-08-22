@@ -14,6 +14,9 @@ Clone **SocketIO** from one of its REPOs:
 	git clone REPO/totemstan/socketio
 	git clone REPO/totemstan/enums
 
+## Usage
+See Program Reference examples.
+
 ## Program Reference
 <details>
 <summary>
