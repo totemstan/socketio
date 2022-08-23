@@ -15,7 +15,12 @@ Clone **SocketIO** from one of its REPOs:
 	git clone REPO/totemstan/enums
 
 ## Usage
-See Program Reference examples.
+
+Acquire **SocketIO** as follows:
+
+	const SIO = require("socketio");
+	
+See the Program Reference for examples.
 
 ## Program Reference
 <details>
